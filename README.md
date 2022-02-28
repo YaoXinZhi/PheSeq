@@ -20,13 +20,15 @@ EMFAS is an abbreviation of "Evidence-augmented Generative Model with Fine-grain
  
     python src/run_model.py -ef [embedding_file] -sf [summary_file] --sl -lp [log_save_path] -lf [log_prefix] -mh [multi_hidden] --rs [random_seed] -ed [embedding_size] -lr [learning_rate] -hd [hidden_dim] -tt [train_time] -bs [batch_size] -pt [p_value_threshold]
     
-**\[initlambda]:** 240, the hyper-parameter;  
-**\[threshold]:** 5e-8, The threshold of p-value;  
-**\[times]:** 100, to record the result at round 100 in iteration;  
-**\[filter_count]:** 80, freguency hyper-parameter, to ensure the stable output.
-**\[rounders]:**  100, the number of the iteration rounds;  
-**\[hidden_factors]:** 100, the hyper-parameter;   
-**\[inputfile]:** data/sorted_IGAP.txt, the result file from Synchronization Filter.   
-**\[outputfolder]:** generate/IGAP_Wilcoxon/, the outputfolder.  
-
-
+**\[embedding_file]:** The embedding file, file format is described in **"HeterogeneousData/EmbeddingData/README.md"**.  
+**\[summary_file]:** The summary file, file format is described in **"HeterogeneousData/EmbeddingData/README.md"**.  
+**\[log_save_path]:** log_save_path.    
+**\[log_prefix]:**  "predict", prefix of the log file name.  
+**\[multi_hidden]:** False, Use more hidden layers.   
+**\[random_seed]:** 126, random size.   
+**\[embedding_size]:** 128, embedding size.  
+**\[learning_rate]:** 5e-3, learning rate. 
+**\[hidden_dim]:** 50, the dimension of hidden layer. 
+**\[train_time]:** 100, training time. 
+**\[batch_size]:** 128, batch size.  
+**\[p_value_threshold]:** 5e-3, The threshold of p-value.  
