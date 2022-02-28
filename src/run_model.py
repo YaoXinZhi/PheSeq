@@ -5,8 +5,6 @@ Created on 27/09/2021 22:31
 @Author: XINZHI YAO
 """
 
-
-
 import os
 import logging
 import argparse
@@ -397,12 +395,10 @@ class GWAS_literature_MLE:
 
 
     def MLE_for_update(self, L_G: list,
-                       use_best_alpha=False,
                        entrez_to_p=None,
                        scope=10,
                        training_data_size=3600,
                        use_fake_data=False,
-                       data_smoothing=False,
                        entrez_to_data=None,
                        save_each_epoch=False,
                        use_early_stop=True,
@@ -433,10 +429,9 @@ class GWAS_literature_MLE:
 
             training_data_list = L_G.copy()
 
-        if use_best_alpha:
-            entrez_to_alpha = self.get_best_alpha(entrez_to_p)
-        else:
-            entrez_to_alpha = None
+
+        entrez_to_alpha = self.get_best_alpha(entrez_to_p)
+
 
         ag_t_list = []
         bg_t_list = []
@@ -605,15 +600,15 @@ class GWAS_literature_MLE:
                         para.copy_(new_para)
 
             if save_each_epoch:
-                fg_list, pg_list = self.evaluate(eval_data_list, time, True, entrez_to_alpha, use_best_alpha)
+                fg_list, pg_list = self.evaluate(eval_data_list, time, entrez_to_alpha, True)
                 plot_save_file = f'{self.log_save_path}/{self.log_prefix}.{time}.pg-fg.png'
                 self.save_fg_pg_plot(pg_list, fg_list, plot_save_file)
             else:
-                self.evaluate(eval_data_list, time, False, None, False, True)
+                self.evaluate(eval_data_list, time, None, False, True)
 
         self.logger.info('Final evaluation.')
-        fg_list, pg_list = self.evaluate(eval_data_list, time, True,
-                                         entrez_to_alpha, use_best_alpha, False)
+        fg_list, pg_list = self.evaluate(eval_data_list, time,
+                                         entrez_to_alpha, True, False)
         return fg_list, pg_list
 
     @staticmethod
@@ -630,7 +625,7 @@ class GWAS_literature_MLE:
 
 
     def evaluate(self, eval_data_set: list, time: int, final_eval: bool,
-                 entrez_to_alpha=None, use_best_alpha=False, smooth_mode=False):
+                 entrez_to_alpha=None, smooth_mode=False):
         # reconstruction error
         self.logger.info('start evaluate.')
         pred_p_list = []
@@ -652,10 +647,8 @@ class GWAS_literature_MLE:
 
                 ag_detach = ag.detach()
                 bg_detach = bg.detach()
-                alpha_g_detach = alpha_g.detach()
 
-                if use_best_alpha:
-                    alpha_g_detach = torch.tensor(float(entrez_to_alpha[entrez_g]))
+                alpha_g_detach = torch.tensor(float(entrez_to_alpha[entrez_g]))
 
                 fg = torch.distributions.Beta(ag_detach, bg_detach).sample()
 
@@ -727,23 +720,12 @@ class GWAS_literature_MLE:
 def main():
 
     parser = argparse.ArgumentParser(description='Lit-GWAS Bayes model.')
-    parser.add_argument('-tl', dest='trend_lambda', type=float,
-                        default=0.25,
-                        help='lambda1, trend lambda, default: 0.25.')
-    parser.add_argument('-bl', dest='base_lambda', type=float,
-                        default=0.50,
-                        help='lambda2, base lambda, default: 0.50.')
 
-    parser.add_argument('-sp', dest='summary_data_path', type=str,
-                        default='../data/AD_GWAS_data/other_GWAS/CNCR_data/NG_2019_bedtools',
-                        help='default ../data/AD_GWAS_data/other_GWAS/CNCR_data/NG_2019_bedtools')
+    parser.add_argument('-ef', dest='embedding_file', type=str,
+                        required=True)
 
-    parser.add_argument('-ep', dest='smoothing_embedding_path', type=str,
-                         default='../result/NG_2019_result/trend_p_hpo_embedding_distinctive',
-                        help='default ../result/NG_2019_result/trend_p_hpo_embedding')
-
-    parser.add_argument('-oe', dest='original_embedding_path', type=str,
-                        default='../result/NG_2019_result/trend_p_hpo_embedding')
+    parser.add_argument('-sf', dest='summary_data_file', type=str,
+                        required=True)
 
     parser.add_argument('-ga', dest='gradient_accumulation', action='store_false',
                         default=True,
@@ -763,9 +745,9 @@ def main():
 
     parser.add_argument('-lp', dest='log_save_path', default='../log',
                         help='default ../log')
+
     parser.add_argument('-lf', dest='log_prefix', default='test',
                         help='test')
-
 
     parser.add_argument('-sm', dest='data_smoothing', action='store_true',
                         default=False,
@@ -787,54 +769,37 @@ def main():
                         default=100,
                         help='default: 100')
 
-    parser.add_argument('-fr', dest='fake_from_real', action='store_true',
-                        default=False,
-                        help='fake_from_real, default: False')
-
-    parser.add_argument('-pv', dest='fake_simple_p', action='store_true',
-                        default=False,
-                        help='fake_simple_p, default=False.')
-
-    parser.add_argument('-up', dest='fake_uniform_p', action='store_true',
-                        default=False,
-                        help='fake_uniform_p, default: False')
-
-    parser.add_argument('-gp', dest='fake_log_p', action='store_true',
-                        default=False,
-                        help='fake_log_p, default: False')
-
-    parser.add_argument('-dn', dest='fake_distinctive_normal', action='store_true',
-                        default=False,
-                        help='fake_distinctive_normal, default: False')
-
-    parser.add_argument('-dt', dest='fake_distinctive_threshold', type=float,
-                        default=0.1,
-                        help='default: 0.1')
-
     parser.add_argument('-ed', dest='embedding_size', type=int,
                         default='128',
                         help='default: 128')
-    
 
-    parser.add_argument('-ba', dest='use_best_alpha', action='store_true',
-                        default=False,
-                        help='use_best_alpha, default: False')
+    parser.add_argument('-lr', dest='learning_rate', type=float,
+                        default=0.005)
+
+    parser.add_argument('-hd', dest='hidden_dim', type=int,
+                        default=50)
+
+    parser.add_argument('-tt', dest='train_time', type=int,
+                        default=100)
+
+    parser.add_argument('-bs', dest='batch_size', type=int,
+                        default=128)
+
+    parser.add_argument('-pt', dest='p_value_threshold', type=float,
+                        default=0.05)
 
     args = parser.parse_args()
 
-    random_seed = 126
+    random_seed = args.random_seed
 
-    hidden_dim = 50
-    # fake_data_parameters
-    mu_factor = 5
-    sigma = 0.001
+    hidden_dim = args.hidden_dim
 
-    phi_learning_rate = 0.005
-    train_time = 100
+    phi_learning_rate = args.learning_rate
+    train_time = args.train_time
 
-    batch_size = 128
+    batch_size = args.batch_size
 
-    gwas_threshold = 0.05
+    gwas_threshold = args.p_value_threshold
 
     save_log = args.save_log
     log_save_path = args.log_save_path
@@ -843,10 +808,9 @@ def main():
     print(f'Random seed: {random_seed}')
     torch.manual_seed(random_seed)
 
-    entrez_p_file = f'{args.summary_data_path}/entrez_p_sentence.HPO.tsv'
+    entrez_p_file = args.summary_data_file
 
-    smoothing_entrez_embedding_file = f'{args.smoothing_embedding_path}/trend_bag_embedding.TrendBeta-{args.trend_lambda:.2f}.beta-{args.base_lambda:.2f}.txt'
-    original_entrez_embedding_file = f'{args.original_embedding_path}/trend_bag_embedding.TrendBeta-{args.trend_lambda:.2f}.beta-{args.base_lambda:.2f}.txt'
+    original_entrez_embedding_file = args.embedding_file
 
     model = GWAS_literature_MLE(args.fake_data_size, args.embedding_size, hidden_dim, train_time,
                                 phi_learning_rate, gwas_threshold,
@@ -858,58 +822,21 @@ def main():
                                 multi_hidden=args.multi_hidden)
 
     if args.use_fake_data:
-        if args.fake_from_real:
-            print('fake data from real.')
-            real_p_list = model.load_data(entrez_p_file, smoothing_entrez_embedding_file, only_p_list=True)
-
-            fake_data = model.fake_data_generate_from_real_data(p_list=real_p_list,
-                                                                mu_factor=mu_factor,
-                                                                sigma=sigma,
-                                                                simple_p=args.fake_simple_p,
-                                                                uniform_p=args.fake_uniform_p,
-                                                                log_p=args.fake_log_p,
-                                                                distinctive_normal=args.fake_distinctive_normal,
-                                                                distinctive_threshold=args.fake_distinctive_threshold)
-        else:
-            print('fake data from nihility.')
-            fake_data = model.fake_data_generator()
+        fake_data = model.fake_data_generator()
 
         fg_list, pg_list = model.MLE_for_update(fake_data)
         plot_save_file = f'{self.log_save_path}/{self.log_prefix}.pg-fg.png'
-
         # save pg-fg scatter.
         model.save_fg_pg_plot(pg_list, fg_list, plot_save_file)
     else:
         print('Use real data.')
-        print('Training with smoothed data.')
-        print(f'Use Best Alpha: {args.use_best_alpha}')
-        entrez_data, entrez_to_p, entrez_to_data = model.load_data(entrez_p_file, smoothing_entrez_embedding_file)
-        # todo: update use smoothed data
-        # todo: update with real data
-        # todo: draw plot every epoch
-        fg_list, pg_list = model.MLE_for_update(entrez_data, args.use_best_alpha, entrez_to_p,
-                                                args.smoothing_scope, args.smoothing_training_data_size,
-                                                args.use_fake_data,
-                                                args.data_smoothing,
-                                                entrez_to_data,
-                                                False,
-                                                True,
-                                                False)
-
-        smoothing_plot_save_file = f'{model.log_save_path}/{model.log_prefix}.smoothing.pg-fg.png'
-
-        # save pg-fg scatter.
-        model.save_fg_pg_plot(pg_list, fg_list, smoothing_plot_save_file)
-
-        # todo: 10-29
         # original_entrez_embedding_file
         print('Training with Real data.')
         entrez_data, entrez_to_p, entrez_to_data = model.load_data(entrez_p_file, original_entrez_embedding_file)
 
-        model.MLE_for_update(entrez_data, args.use_best_alpha, entrez_to_p,
+        model.MLE_for_update(entrez_data, entrez_to_p,
                                                 args.smoothing_scope, args.smoothing_training_data_size,
                                                 args.use_fake_data,
-                                                False,
                                                 entrez_to_data,
                                                 True,
                                                 False,
