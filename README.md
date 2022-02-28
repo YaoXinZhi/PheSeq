@@ -1,7 +1,7 @@
 # EMFAS
 **Evidence-augmented Generative Model with Fine-grained weAk Labels (EMFAS) Model for Gene-Disease Association Discovery**
 
-EMFAS is an abbreviation of "Evidence-augmented Generative Model with Fine-grained weAk Labels ". This is a Generative model with Bayesian framework. Please follow the below directions to run the model.
+EMFAS is an abbreviation of "Evidence-augmented Generative Model with Fine-grained weAk Labels ". This is a Generative model with Bayesian framework. Please follow the below directions to run this model.
 
 # Data Collection
 The **HeterogeneousData** folder contains both **Embedding data** and **p-value data** for three diseases. 
