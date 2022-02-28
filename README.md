@@ -20,7 +20,7 @@ EMFAS is an abbreviation of "Evidence-augmented Generative Model with Fine-grain
  
     python src/run_model.py -ef [embedding_file] -sf [summary_file] --sl -lp [log_save_path] -lf [log_prefix] -mh [multi_hidden] --rs [random_seed] -ed [embedding_size] -lr [learning_rate] -hd [hidden_dim] -tt [train_time] -bs [batch_size] -pt [p_value_threshold]
     
-**\[embedding_file]:** The embedding file, file format is described in **"HeterogeneousData/EmbeddingData/README.md"**.  
+**\[embedding_file]:** The embedding file.  
 **\[summary_file]:** The summary file, file format is described in **"HeterogeneousData/EmbeddingData/README.md"**.  
 **\[log_save_path]:** log_save_path.    
 **\[log_prefix]:**  "predict", prefix of the log file name.  
