@@ -50,6 +50,25 @@ After data download, the following commed is used to pre-process graph embedding
 **\[save_file]:** processed graph embedding file.  
 
 ## Embedding Merge with fixed weights
+This step is used to merge the three types of embeddings with fixed weights.
+
+
+    python Concept_embedding_merge.py --summary_file [summary_file]
+                                      --concept_embedding_file [concept_embedding_file]
+                                      --embedding_save_file [embedding_save_file]
+
+**\[summary_file]:** Summary data, which including the sentence descriptions and p-value for each gene.    
+> Example files can be found in HeterogeneousData/EmbeddingData/TextData.   
+> 1. **literature file format** (Tab separated)   
+> GENE_LINE:    $GENE_Symbol    $Entrez_ID  $p-valie  
+> $PMID_1 Sentence_1   {$Tag_1, Tag_2}  
+> $PMID_2 Sentence_2   {$Tag_1, Tag_2}  
+
+**\[concept_embedding_file]:** concept embedding file generated from **Text Embedding Calculation**.  
+**\[embedding_save_file]:** merged embedding save file.    
+
+
+
 
 ## GWAS Summary data Pre-processing
 **GWAS_data_process.py** can be referenced for pre-processing of GWAS Summary data, including mapping SNP loci to Gene Symbol and Entrez ID, getting the most significant p-value for each gene.
