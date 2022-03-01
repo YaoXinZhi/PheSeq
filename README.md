@@ -9,7 +9,7 @@ EMFAS is an abbreviation of "Evidence-augmented Generative Model with Fine-grain
 ### Data Collection
 The **HeterogeneousData** folder contains both **Embedding data** and **p-value data** for three diseases. 
 
-The text data in **HeterogeneousData/EmbeddingData/TextData** are downloaded from PubTator (https://www.ncbi.nlm.nih.gov/research/pubtator/). In the case when ones would like to collect all literature data related to an interested disease, please search the disease name in PubTator database and download all the Json/PubTator/BioC files.
+The text data in **HeterogeneousData/EmbeddingData/TextData** are downloaded from PubTator (https://www.ncbi.nlm.nih.gov/research/pubtator/). In the case when ones would like to collect all literature data related to an interest disease, please search the disease name in PubTator database and download all the Json/PubTator/BioC files.
 
 The graph embedding **HeterogeneousData/EmbeddingData/GraphData** are downloaded from BioNEV (https://github.com/xiangyue9607/BioNEV). 
 
