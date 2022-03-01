@@ -33,11 +33,22 @@ This step is used to perform BERT-based embedding calculation on the gene litera
 **\[SINGLE_SENTENCE_FILE]:** True for biomedical concept file format and False for literature file format.    
 **\[text_Norm]:** Using text normalization or not.  
 
-
-
-
 ## Graph Embedding filter
+This step is used to map the raw graph embedding data to genes and Entrez ID. The raw graph embedding data can be found in **HeterogeneousData/EmbeddingData/GraphData**. The gene-ensemble mapping file can be download in https://ftp.ncbi.nih.gov/gene/DATA/gene2ensembl.gz, and "gunzip .gz_file" is used to decompress this file.  
 
+After data download, the following commed is used to pre-process graph embedding data.
+
+
+    python Get_Entrez_struc2vec_embedding.py 
+                            --gene2ensemble_file [gene2ensemble_file]
+                            --node_file [node_file]
+                            --embedding_file [embedding_file]
+                            --save_file [save_file]
+
+**\[gene2ensemble_file]:** gene-ensemble id mapping file, which downloaded from NCBI.    
+**\[node_file]:** nodes file of graph embedding data, which can be found in this floder.  
+**\[embedding_file]:** raw graph embedding file, which can be found in this floder.    
+**\[save_file]:** processed graph embedding file.  
 
 ## Embedding Merge with fixed weights
 
