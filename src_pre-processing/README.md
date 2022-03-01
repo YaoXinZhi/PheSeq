@@ -68,6 +68,14 @@ This step is used to merge the three types of embeddings with fixed weights.
 **\[embedding_save_file]:** merged embedding save file.    
 
 
+    python Text_embedding_merge.py --text_embedding_file [text_embedding_file]
+                                   --concept_embedding_file [concept_embedding_file]
+                                   --embedding_save_file [embedding_save_file]
+
+**\[text_embedding_file]:** text embedding file generated from **Text Embedding Calculation**.
+**\[concept_embedding_file]:** concept embedding file generated from **Text Embedding Calculation**.  
+**\[embedding_save_file]:** merged embedding save file.    
+
 
 
 ## GWAS Summary data Pre-processing
