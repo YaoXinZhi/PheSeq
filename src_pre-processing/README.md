@@ -13,7 +13,7 @@ This step is used to perform BERT-based embedding calculation on the gene litera
                             --sigle_sentence_file [SINGLE_SENTENCE_FILE]
                             --text_norm [TEXT_NORM]
                                
-**\[INPUT_FILE]:** input file, literature file or biomedical concept file.
+**\[INPUT_FILE]:** the literature file or biomedical concept file for embedding calculation.
 > Example files can be found in HeterogeneousData/EmbeddingData/TextData. 
 > 1. **literature file format** (Tab separated) 
 > GENE_LINE:    $GENE_Symbol    $Entrez_ID  $p-valie
