@@ -29,7 +29,6 @@ If you want to use the EMFAS model for your own heterogeneous data -- a set of e
 
 **2. Embedding data**
 > Embedding data, it can be derived from different representation learning methods, such as Graph embedding, text embedding.  
-> Example files can be found in **HeterogeneousData/EmbeddingData/Embedding**  
 > Embedding files for mat as flowers (Tab separated):  
 >> $Entrez_ID_1 $embedding_vec_1  
 >> $Entrez_ID_2 $embedding_vec_2  
