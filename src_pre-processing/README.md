@@ -39,11 +39,10 @@ This step is used to map the raw graph embedding data to genes and Entrez ID. Th
 After data download, the following commed is used to pre-process graph embedding data.
 
 
-    python Get_Entrez_struc2vec_embedding.py 
-                            --gene2ensemble_file [gene2ensemble_file]
-                            --node_file [node_file]
-                            --embedding_file [embedding_file]
-                            --save_file [save_file]
+    python Get_Entrez_struc2vec_embedding.py --gene2ensemble_file [gene2ensemble_file]
+                                             --node_file [node_file]
+                                             --embedding_file [embedding_file]
+                                             --save_file [save_file]
 
 **\[gene2ensemble_file]:** gene-ensemble id mapping file, which downloaded from NCBI.    
 **\[node_file]:** nodes file of graph embedding data, which can be found in this floder.  
