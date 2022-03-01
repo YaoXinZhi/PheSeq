@@ -15,7 +15,7 @@ The graph embedding **HeterogeneousData/EmbeddingData/GraphData** are downloaded
 
 The download link of p-value data is recorded in **HeterogeneousData/P-ValueData/README.md**. The GWAS Summary data for AD are collected from GWAS Catalog (https://www.ebi.ac.uk/gwas/), and both transcriptome data for BC and methylation data for LC are collected from TCGA (https://www.cancer.gov/about-nci/organization/ccg/research/structural-genomics/tcga). For the disease under consideration, GWAS Summary data need be collected from resource like GWAS Catalog. Please be sure to include both gene site and p-value in the file.
 
-**More information about heterogeneous data collection and pre-processing can be found in "HeterogeneousData/README.md"**
+**More information about collection and pre-processing of heterogeneous data can be found in "HeterogeneousData/README.md"**
 
 ## Run Model
  
