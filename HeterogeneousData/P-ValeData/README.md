@@ -13,6 +13,6 @@ In the case when ones would to collect the **p-value for cancer**, please search
 
 After gene-p-value data is collected, the NCBI gene-entrez mapping file (https://ftp.ncbi.nih.gov/gene/DATA/gene_info.gz) need be used for converting gene symbol to Entrez ID.
 
-The processed p-value data needs to have three columns separated by Tab keys, including **GeneSymbol, EntrezID and p-value**, like **P-ValueData/BC/BC.symbol_entrez.p.tsv**.
+The processed p-value data needs to have three columns separated by Tab keys, including **GeneSymbol, EntrezID and p-value**, the file format is same as the **P-ValueData/BC/BC.symbol_entrez.p.tsv**.
 
 
