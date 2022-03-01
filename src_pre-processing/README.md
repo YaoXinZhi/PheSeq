@@ -59,7 +59,7 @@ This step is used to merge the three types of embeddings with fixed weights.
 
 **\[summary_file]:** Summary data, which including the sentence descriptions and p-value for each gene.    
 > Example files can be found in HeterogeneousData/EmbeddingData/TextData.   
-> 1. **literature file format** (Tab separated)   
+> 1. **Summary file format** (Tab separated)   
 > GENE_LINE:    $GENE_Symbol    $Entrez_ID  $p-valie  
 > $PMID_1 Sentence_1   {$Tag_1, Tag_2}  
 > $PMID_2 Sentence_2   {$Tag_1, Tag_2}  
