@@ -51,5 +51,8 @@ After data download, the following commed is used to pre-process graph embedding
 
 ## Embedding Merge with fixed weights
 
+## GWAS Summary data Pre-processing
+**GWAS_data_process.py** can be referenced for pre-processing of GWAS Summary data, including mapping SNP loci to Gene Symbol and Entrez ID, getting the most significant p-value for each gene.
+
 
 
