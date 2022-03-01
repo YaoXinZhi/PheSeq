@@ -17,6 +17,16 @@ The download link of p-value data is recorded in **HeterogeneousData/P-ValueData
 
 **More information about collection and pre-processing of heterogeneous data can be found in "HeterogeneousData/README.md"**
 
+### Training with your own data  
+If you want to use the EMFAS model for your own heterogeneous data -- a set of embedding data and a set of p-value data, then the two files need to be constructed.  
+**1. Summary data**  
+> Summary data, which including the sentence descriptions and p-value for each gene.  
+> Example files can be found in **HeterogeneousData/EmbeddingData/TextData**.  
+> The Summary file format as flowers:  
+>> GENE_LINE:    $GENE_Symbol    $Entrez_ID  $p-valie  
+>> $PMID_1 Sentence_1   {$Tag_1, Tag_2}  
+>> $PMID_2 Sentence_2   {$Tag_1, Tag_2}  
+
 ## Run Model
  
     python src/run_model.py -ef [embedding_file] -sf [summary_file] --sl -lp [log_save_path] -lf [log_prefix] -mh [multi_hidden] --rs [random_seed] -ed [embedding_size] -lr [learning_rate] -hd [hidden_dim] -tt [train_time] -bs [batch_size] -pt [p_value_threshold]
