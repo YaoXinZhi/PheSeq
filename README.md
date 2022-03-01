@@ -22,10 +22,17 @@ If you want to use the EMFAS model for your own heterogeneous data -- a set of e
 **1. Summary data**  
 > Summary data, which including the sentence descriptions and p-value for each gene.  
 > Example files can be found in **HeterogeneousData/EmbeddingData/TextData**.  
-> The Summary file format as flowers:  
+> The Summary file format as flowers (Tab separated):  
 >> GENE_LINE:    $GENE_Symbol    $Entrez_ID  $p-valie  
 >> $PMID_1 Sentence_1   {$Tag_1, Tag_2}  
->> $PMID_2 Sentence_2   {$Tag_1, Tag_2}  
+>> $PMID_2 Sentence_2   {$Tag_1, Tag_2}   
+
+**2. Embedding data**
+> Embedding data, it can be derived from different representation learning methods, such as Graph embedding, text embedding.
+> Example files can be found in **HeterogeneousData/EmbeddingData/Embedding**
+> Embedding files for mat as flowers (Tab separated):
+>> $Entrez_ID_1 $embedding_vec_1
+>> $Entrez_ID_2 $embedding_vec_2
 
 ## Run Model
  
