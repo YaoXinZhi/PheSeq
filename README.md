@@ -3,6 +3,24 @@
 
 EMFAS is an abbreviation of "Evidence-augmented Generative Model with Fine-grained weAk Labels ". This is a Generative model with Bayesian framework. Please follow the below directions to run this model.
 
+## Environment Configuration. 
+EMFAS have been tested using python3.7 on Ubuntu 21.04 and uses the following main dependencies on a CPU and NVIDIA GeForce RTX 3090Ti GPU:  
+
+ 
+    torch==1.7.1
+    sympy==1.8.0
+    scipy==1.1.2
+    numpy==1.19.5
+    spacy==2.3.5
+    scikit-learn==0.20.0
+    matplotlib-inline==0.1.3
+    jupyter==1.0.0
+    
+Other dependency packages can be found in the **requeirement.txt**, and batch installed with the following commend line.  
+ 
+    pip3 install -r requirements.txt
+
+
 ## Data preprocessing
 
 
