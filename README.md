@@ -3,7 +3,7 @@
 
 EMFAS is an abbreviation of "Evidence-augmented Generative Model with Fine-grained weAk Labels ". This is a Generative model with Bayesian framework. Please follow the below directions to run this model.
 
-## Environment Configuration. 
+## Environment Configuration  
 EMFAS have been tested using python3.7 on Ubuntu 21.04 and uses the following main dependencies on a CPU and NVIDIA GeForce RTX 3090Ti GPU:  
 
  
