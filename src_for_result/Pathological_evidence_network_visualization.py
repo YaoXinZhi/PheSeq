@@ -33,8 +33,8 @@ def read_string_db(string_file: str):
 def get_to_n_for_vis(report_file: str, topn:int):
     line_count = 0
 
+    top_gene_list = []
     selected_go_to_term = {}
-    gene_to_evi = defaultdict(set)
     entrez_to_go = defaultdict(set)
     go_to_entrez = defaultdict(set)
     with open(report_file) as f:
@@ -43,9 +43,9 @@ def get_to_n_for_vis(report_file: str, topn:int):
             l = line.strip().split('\t')
 
             entrez = l[0]
-            symbol = l[1]
 
-            # fixme: tags in last column of report file
+            top_gene_list.append(entrez)
+
             tags = l[-1].split('  ')
 
             for tag in tags:
@@ -61,12 +61,10 @@ def get_to_n_for_vis(report_file: str, topn:int):
             if line_count >= topn:
                 break
 
-    top_gene_list = list(sorted(gene_to_mix_score.keys(), key=lambda x: gene_to_mix_score[ x ], reverse=True))[ :top_n ]
-
     top_gene_set = set(top_gene_list)
     return top_gene_list, top_gene_set, selected_go_to_term
 
-def read_gene_info(gene_info_file: str, tax_id: str):
+def read_gene_info(gene_info_file: str, tax: str):
     entrez_to_symbol = {}
     symbol_to_entrez = {}
     with gzip.open(gene_info_file, 'r') as f:
@@ -75,7 +73,7 @@ def read_gene_info(gene_info_file: str, tax_id: str):
             l = line.decode('utf-8').strip().split('\t')
 
             tax_id = l[ 0 ]
-            if tax_id != tax_id:
+            if tax_id != tax:
                 continue
             entrez = l[ 1 ]
             symbol = l[ 2 ]
@@ -89,14 +87,13 @@ def read_obo_file(obo_file: str):
     go_id_to_term = {}
     go_alt_id_to_term = {}
     go_to_type = {}
-    with open(go_obo_file) as f:
+    with open(obo_file) as f:
         for line in f:
             l = line.strip().split()
             if line.startswith('id:'):
                 go_id = l[ 1 ]
             if line.startswith('name:'):
                 go_term = ' '.join(l[ 1: ])
-                go_name = ' '.join(l[ 1: ])
                 go_id_to_term[ go_id ] = go_term
             if line.startswith('namespace:'):
                 go_type = l[ 1 ]
@@ -107,14 +104,14 @@ def read_obo_file(obo_file: str):
 
     return go_id_to_term, go_alt_id_to_term, go_to_type
 
-def read_gene_to_ensembl_file(gene_to_ensembl_file: str):
+def read_gene_to_ensembl_file(gene_to_ensembl_file: str, tax: str):
     ensembl_to_entrez = {}
-    with open(gene2ensembl_file) as f:
+    with open(gene_to_ensembl_file) as f:
         for line in f:
             l = line.strip().split('\t')
 
             tax_id = l[ 0 ]
-            if l[ 0 ] != '9606':
+            if tax_id != tax:
                 continue
 
             entrez = l[ 1 ]
@@ -146,7 +143,7 @@ def read_seq_gene_file(seq_gene_file: str):
             seq_gene_set.add(l)
     return seq_gene_set
 
-def read_evidence_file(evidence_file: str):
+def read_evidence_file(evidence_file: str, top_gene_set: set):
     entrez_to_go = defaultdict(set)
     entrez_to_hpo = defaultdict(set)
 
@@ -163,7 +160,12 @@ def read_evidence_file(evidence_file: str):
             gene_set = set()
             for tag in tag_list:
                 if len(tag) == 4 and tag[1] == 'Gene':
-                    gene_set.add((l[0], l[2]))
+                    gene_mention = l[0]
+                    entrez = l[2]
+                    if not entrez in top_gene_set:
+                        continue
+                    gene_set.add((gene_mention, entrez))
+
             if not gene_set:
                 continue
 
@@ -185,10 +187,9 @@ def read_evidence_file(evidence_file: str):
     return entrez_to_go_evi, entrez_to_hpo_evi, entrez_to_go, entrez_to_hpo
 
 
-
-
 def process_node_info(top_gene_set: set, gwas_gene_set: set,
-                      entrez_to_symbol: dict, selected_go_to_term: dict):
+                      entrez_to_symbol: dict, selected_go_to_term: dict,
+                      go_id_to_term: dict):
     gene_node_size = 60
     go_node_size = 40
 
@@ -207,12 +208,8 @@ def process_node_info(top_gene_set: set, gwas_gene_set: set,
 
     # GWAS node with blue
     for entrez in gwas_only_gene_set:
-        # if not set(filter(in_selected, entrez_to_go[entrez])):
-        # continue
         draw_gwas_gene_set.add(entrez)
 
-        # if entrez_to_symbol[entrez] == 'PTK2B':
-        # print(entrez, entrez_to_symbol[entrez])
         gene_go_node_list.append({'name': entrez_to_symbol[ entrez ],
                                   'value': f'{entrez}:{entrez_to_symbol[ entrez ]}',
                                   'symbolSize': gene_node_size,
@@ -265,10 +262,13 @@ def process_node_info(top_gene_set: set, gwas_gene_set: set,
                                   })
 
     # GO node with green
-    selected_go_set = set(selected_go_to_term.keys())
     for go_id, term in selected_go_to_term.items():
-        gene_go_node_list.append({'name': term,
-                                  'value': f'{go_id}:{term}',
+        if go_id_to_term.get(go_id):
+            official_name = go_id_to_term[go_id]
+        else:
+            continue
+        gene_go_node_list.append({'name': official_name,
+                                  'value': f'{go_id}:{official_name}',
                                   'symbolSize': go_node_size,
                                   'draggable': 'True',
                                   'categories': 'Gene',
@@ -353,7 +353,7 @@ def save_rich_text(entrez_to_term_evi: dict, rich_save_file: str):
                 gene_mention, hpo_id, hpo_mention, pmid, sentence = evidence
                 if len(gene_mention) < 3 or len(hpo_mention) < 3:
                     continue
-                # 需要计算rich text
+
                 rich_text = get_html_rich(gene_mention, hpo_mention, 'gene', 'GO', sentence)
 
                 if max_length < len(rich_text):
@@ -369,7 +369,6 @@ def padding(list_a: list, list_b: list):
         list_b.extend(['[pad]']*(len(list_a)-len(list_b)))
         return list_a, list_b
     return list_a, list_b
-
 
 def pretty_html_text(rich_text: str, line_token: int = 4):
     text_split = re.split(r'<.*?>', rich_text)
@@ -392,7 +391,7 @@ def pretty_html_text(rich_text: str, line_token: int = 4):
                 batch_token.append(token)
                 if text_token:
                     token_list.append(token)
-                # if len(token_list) % line_token == 0 and len(token_list) != 0:
+
                 if token_count % line_token == 0 and len(token_list) != 0:
                     batch_token.append('<br/>')
         pretty_doc.append(' '.join(batch_token))
@@ -465,7 +464,6 @@ def process_edge_info(top_gene_set: set, gwas_gene_set: set,
                                      },
                                      })
 
-    string_edges_count = len(string_edges)
     # edges for gene-GO
     entrez_to_selected_go_count = defaultdict(int)
     gene_go_edge_count = 0
@@ -821,7 +819,7 @@ def main():
             raise ValueError('STRING file is not in "../data/", please download the corresponding file from https://stringdb-static.org/download/protein.links.v11.5/9606.protein.links.v11.5.txt.gz and place it in "../data/"')
 
         if os.path.exists(gene_to_ensemble_file):
-            ensemble_to_entrez = read_gene_to_ensembl_file(gene_to_ensemble_file)
+            ensemble_to_entrez = read_gene_to_ensembl_file(gene_to_ensemble_file, args.tax_id)
         else:
             raise ValueError(
                 'STRING file is not in "../data/", please download the corresponding file from https://ftp.ncbi.nih.gov/gene/DATA/gene2ensembl.gz and place it in "../data/"')
@@ -836,11 +834,11 @@ def main():
     else:
         raise ValueError('gene_info.gz file is not in "../data/", please download the corresponding file from https://ftp.ncbi.nih.gov/gene/DATA/gene_info.gz and place it in "../data/"')
 
-    # go_file = '../data/go.obo'
-    # if os.path.exists(go_file):
-    #     go_id_to_term, go_alt_id_to_term, go_to_type = read_obo_file(go_file)
-    # else:
-    #     raise ValueError('gene_info.gz file is not in "../data/", please download the corresponding file from http://purl.obolibrary.org/obo/go/go-basic.obo and place it in "../data/"')
+    go_file = '../data/go.obo'
+    if os.path.exists(go_file):
+        go_id_to_term, go_alt_id_to_term, go_to_type = read_obo_file(go_file)
+    else:
+        raise ValueError('gene_info.gz file is not in "../data/", please download the corresponding file from http://purl.obolibrary.org/obo/go/go-basic.obo and place it in "../data/"')
 
     if args.sequence_analysis_gene_file:
         gwas_gene_set = read_seq_gene_file(args.sequence_analysis_gene_file)
@@ -848,7 +846,7 @@ def main():
         gwas_gene_set = set()
 
 
-    entrez_to_go_evi, entrez_to_hpo_evi, entrez_to_go, entrez_to_hpo = read_evidence_file(args.evidence_file)
+    entrez_to_go_evi, entrez_to_hpo_evi, entrez_to_go, entrez_to_hpo = read_evidence_file(args.evidence_file, top_gene_set)
 
     temp_dir = '../temp'
 
@@ -860,7 +858,7 @@ def main():
 
 
     node_str = process_node_info(top_gene_set, gwas_gene_set, entrez_to_symbol,
-                                 selected_go_to_term)
+                                 selected_go_to_term, go_id_to_term)
 
 
     edge_str = process_edge_info(top_gene_set, gwas_gene_set,
