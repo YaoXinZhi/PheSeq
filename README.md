@@ -57,6 +57,8 @@ If you want to use the EMFAS model for your own heterogeneous data -- a set of e
 
 ## Run Model
  
+ **1. Static-EMFAS**
+ 
     python src/run_model.py -ef [embedding_file] -sf [summary_file] --sl -lp [log_save_path] -lf [log_prefix] -mh [multi_hidden] --rs [random_seed] -ed [embedding_size] -lr [learning_rate] -hd [hidden_dim] -tt [train_time] -bs [batch_size] -pt [p_value_threshold]
     
 **\[embedding_file]:** The embedding file.  
@@ -72,6 +74,8 @@ If you want to use the EMFAS model for your own heterogeneous data -- a set of e
 **\[batch_size]:** 128, batch size.  
 **\[p_value_threshold]:** 5e-3, The threshold of p-value.  
 
+
+ **2. Dynamic-EMFAS**
 
     python src/Dynamic EMFAS.py -mf [summary file] -ef [embedding file] -ds [data size] -ed [embedding size] -mh [multi hidden] -hs [hidden dim] -zd [z dim] -bs [batch size] -tt [train time] -lr [learning rate] -mr [mu learning rate] -sr [sigma learning rate] -rs [random seed] -ga [gradient accumulation] -sl [save log] -lp [log save path] -lf [log save prefix] -uf [use fake data]
     
