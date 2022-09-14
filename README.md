@@ -80,27 +80,27 @@ If you want to use the EMFAS model for your own heterogeneous data -- a set of e
     python src/Dynamic EMFAS.py -mf [summary file] -ef [embedding file] -ds [data size] -ed [embedding size] -mh [multi hidden] -hs [hidden dim] -zd [z dim] -bs [batch size] -tt [train time] -lr [learning rate] -mr [mu learning rate] -sr [sigma learning rate] -rs [random seed] -ga [gradient accumulation] -sl [save log] -lp [log save path] -lf [log save prefix] -uf [use fake data]
     
 
-**\[summary file]:** The summary file, file format is described in ”HeterogeneousData /Embed-dingData /README.md”.
-**\[embedding file]:** The embedding file.
-**\[data size]:** The data size (genotype-phenotype association count) of the input data.
-**\[embedding size]:** The embedding dimension of the embedding data.
-**\[multi hidden]:** Use more hidden layers.
-**\[hidden dim]:** The hidden layer dimension of the deep learning module.
-**\[z dim]:** The dimension of the latent variable Z.
-**\v[log save path]:** The folder used to save the log file.
-**\[log prefix]:** The name prefix of the log file.
-**\[batch size]:** Data count of each mini-batch.
-**\[train time]:** The training epoch.
-**\[batch size]:** Batch size.
-**\[learning rate]:** The learning rate.
-**\[mu learning rate]:** The learning rate for μ-related part in the deep learning module.
-**\[sigma learning rate]:** The learning rate for σ-related part in the deep learning module.
-**\[random seed]:** Random size.
-**\[gradient accumulation]:** Using gradient accumulation strategy in model training or not.
-**\[save log]:** Save the log file or not.
-**\[log save path]:** The folder for saving the log file.
-**\[log save prefix]:** The name prefix for the saved log file.
-**\[use fake data]:** True, using test file or not.
+**\[summary file]:** The summary file, file format is described in ”HeterogeneousData /Embed-dingData /README.md”.  
+**\[embedding file]:** The embedding file.   
+**\[data size]:** The data size (genotype-phenotype association count) of the input data.   
+**\[embedding size]:** The embedding dimension of the embedding data.   
+**\[multi hidden]:** Use more hidden layers.   
+**\[hidden dim]:** The hidden layer dimension of the deep learning module.   
+**\[z dim]:** The dimension of the latent variable Z.      
+**\v[log save path]:** The folder used to save the log file.   
+**\[log prefix]:** The name prefix of the log file.   
+**\[batch size]:** Data count of each mini-batch.   
+**\[train time]:** The training epoch.   
+**\[batch size]:** Batch size.   
+**\[learning rate]:** The learning rate.   
+**\[mu learning rate]:** The learning rate for μ-related part in the deep learning module.   
+**\[sigma learning rate]:** The learning rate for σ-related part in the deep learning module.   
+**\[random seed]:** Random size.   
+**\[gradient accumulation]:** Using gradient accumulation strategy in model training or not.   
+**\[save log]:** Save the log file or not.   
+**\[log save path]:** The folder for saving the log file.   
+**\[log save prefix]:** The name prefix for the saved log file.   
+**\[use fake data]:** True, using test file or not.   
 
 
 
