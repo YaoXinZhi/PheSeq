@@ -9,11 +9,11 @@ This code is used to display the embedding clustering results and requires two f
     
 
 **\[cluster_file]:**  a file containing the embedding name and the corresponding cluster name, tab-separated.  
-**\[embedding_file]:** a file containing the embedding name and the corresponding embedding vector, tab-separated. 3. a file containing the embedding name and the corresponding embedding vector, tab-separated.     
+**\[embedding_file]:** a file containing the embedding name and the corresponding embedding vector, tab-separated. 
 **\[save_path]:** path for saving figure.   
 
 
-## Embedding_p_observation.ipynb. 
+## Embedding_p_observation.py. 
 This code is used to observe the intrinsic association mechanism between the embedded data and the p-values.
 
     python Embedding_p_observation.py -ef  [embedding_file] -pf [p_value_file] -sp [save_path]   
