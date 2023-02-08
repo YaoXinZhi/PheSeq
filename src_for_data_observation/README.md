@@ -18,8 +18,8 @@ This code is used to observe the intrinsic association mechanism between the emb
 
     python Embedding_p_observation.py -ef  [embedding_file] -pf [p_value_file] -sp [save_path]   
 
-**\[cluster_file]:**  A file contains the embedding name and the embedding vector, tab key separated.   
-**\[embedding_file]:** A file contains the embedding name and the p-value, tab key delimited.  
+**\[embedding_file]:**  A file contains the embedding name and the embedding vector, tab key separated.   
+**\[p_value_file]:** A file contains the embedding name and the p-value, tab key delimited.  
 **\[save_path]:** path for saving figure.   
 
 
