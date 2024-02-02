@@ -24,9 +24,9 @@ Other dependency packages can be found in the **requeirement.txt**, and batch in
 ## Data preprocessing
 
 ### Pre-computed embedding for 32 Pan-Cancers in TCGA  
-To facilitate the EMFAS implementation for more disease cases, pre-processed text and embedding data for 32 types of Pan-Cancers in TCGA database are offered in http://lit-evi.hzau.edu.cn/Bayes/more-diseases. The data include rich-annotated sentence evidence and pre-computed embedding for each gene.  
+To facilitate the PheSeq implementation for more disease cases, pre-processed text and embedding data for 32 types of Pan-Cancers in TCGA database are offered in http://lit-evi.hzau.edu.cn/Bayes/more-diseases. The data include rich-annotated sentence evidence and pre-computed embedding for each gene.  
 
-For these 32 cancers, the pre-computed embedding data can be downloaded directly, and the EMFAS model can be used to intergrate the sequence analysis data already developed by the user with embedding data.  
+For these 32 cancers, the pre-computed embedding data can be downloaded directly, and the PheSeq model can be used to intergrate the sequence analysis data already developed by the user with embedding data.  
 
 
 ### Data Collection
@@ -43,7 +43,7 @@ The download link of p-value data is recorded in **HeterogeneousData/P-ValueData
 **More information about collection and pre-processing of heterogeneous data can be found in "HeterogeneousData/README.md"**
 
 ### Training with your own data  
-If you want to use the EMFAS model for your own heterogeneous data -- a set of embedding data and a set of p-value data, then the two files need to be constructed.  
+If you want to use the PheSeq model for your own heterogeneous data -- a set of embedding data and a set of p-value data, then the two files need to be constructed.  
 **1. Summary data**  
 > Summary data, which including the sentence descriptions and p-value for each gene.  
 > Example files can be found in **HeterogeneousData/EmbeddingData/TextData**.  
@@ -60,7 +60,7 @@ If you want to use the EMFAS model for your own heterogeneous data -- a set of e
 
 ## Run Model
  
- **1. Static-EMFAS**
+ **1. Static-PheSeq**
  
     python src/run_model.py -ef [embedding_file] -sf [summary_file] --sl -lp [log_save_path] -lf [log_prefix] -mh [multi_hidden] --rs [random_seed] -ed [embedding_size] -lr [learning_rate] -hd [hidden_dim] -tt [train_time] -bs [batch_size] -pt [p_value_threshold]
     
@@ -78,9 +78,9 @@ If you want to use the EMFAS model for your own heterogeneous data -- a set of e
 **\[p_value_threshold]:** 5e-3, The threshold of p-value.  
 
 
- **2. Dynamic-EMFAS**
+ **2. Dynamic-PheSeq**
 
-    python src/Dynamic EMFAS.py -mf [summary file] -ef [embedding file] -ds [data size] -ed [embedding size] -mh [multi hidden] -hs [hidden dim] -zd [z dim] -bs [batch size] -tt [train time] -lr [learning rate] -mr [mu learning rate] -sr [sigma learning rate] -rs [random seed] -ga [gradient accumulation] -sl [save log] -lp [log save path] -lf [log save prefix] -uf [use fake data]
+    python src/Dynamic PheSeq.py -mf [summary file] -ef [embedding file] -ds [data size] -ed [embedding size] -mh [multi hidden] -hs [hidden dim] -zd [z dim] -bs [batch size] -tt [train time] -lr [learning rate] -mr [mu learning rate] -sr [sigma learning rate] -rs [random seed] -ga [gradient accumulation] -sl [save log] -lp [log save path] -lf [log save prefix] -uf [use fake data]
     
 
 **\[summary file]:** The summary file, file format is described in ”HeterogeneousData /Embed-dingData /README.md”.  
