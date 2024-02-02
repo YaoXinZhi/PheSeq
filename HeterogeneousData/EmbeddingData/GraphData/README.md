@@ -5,8 +5,8 @@ The Supplementary Graph Embedding folder provides gene network embeddings constr
 The **Supplementary Graph Embedding** folder provides gene network embeddings constructed using the STRING database for protein-protein interactions (PPI), along with five sets of alternative network edge files and pre-trained gene network embeddings, as introduced in the paper.
 
 
-**STRING-PPI (utilzed in the paper)**: 
-Cite:  
+**STRING-PPI (utilzed in the paper)**:   
+Cite:
 [1] Yue, Xiang, et al. "Graph embedding on biomedical networks: methods, applications and evaluations." Bioinformatics 36.4 (2020): 1241-1251.   
 [2] Mering, Christian von, et al. "STRING: a database of predicted functional associations between proteins." Nucleic acids research 31.1 (2003): 258-261.  
 Download: https://github.com/xiangyue9607/BioNEV
@@ -14,7 +14,7 @@ Download: https://github.com/xiangyue9607/BioNEV
 **node2vec_PPI**:  
 Cite:  
 [1] Yue, Xiang, et al. "Graph embedding on biomedical networks: methods, applications and evaluations." Bioinformatics 36.4 (2020): 1241-1251.   
-[2] Grover, Aditya, and Jure Leskovec. "node2vec: Scalable feature learning for networks." Proceedings of the 22nd ACM SIGKDD international conference on Knowledge discovery and data mining. 2016.
+[2] Grover, Aditya, and Jure Leskovec. "node2vec: Scalable feature learning for networks." Proceedings of the 22nd ACM SIGKDD international conference on Knowledge discovery and data mining. 2016.  
 Download: https://github.com/xiangyue9607/BioNEV
 
 **Mashup_PPI**  
