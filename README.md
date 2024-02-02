@@ -35,6 +35,8 @@ The text data in **HeterogeneousData/EmbeddingData/TextData** are downloaded fro
 
 The graph embedding **HeterogeneousData/EmbeddingData/GraphData** are downloaded from BioNEV (https://github.com/xiangyue9607/BioNEV). 
 
+We additionally provide 4 alternative gene network embeddings, namely [node2vec_PPI](https://github.com/xiangyue9607/BioNEV/tree/master/data/node2vec_PPI), [Mashup_PPI](https://github.com/xiangyue9607/BioNEV/tree/master/data/Mashup_PPI), [BioPlex 3.0](https://bioplex.hms.harvard.edu/interactions.php), [HuRI](http://www.interactome-atlas.org/download), [Drug-Target Network](https://www.nature.com/articles/nbt1338). The corresponding edge files and pre-trained embeddings can be found in **HeterogeneousData/EmbeddingData/GraphData**. More information about alternative gene network embeddings can be found in the corresponding folders.
+
 The download link of p-value data is recorded in **HeterogeneousData/P-ValueData/README.md**. The GWAS Summary data for AD are collected from GWAS Catalog (https://www.ebi.ac.uk/gwas/), and both transcriptome data for BC and methylation data for LC are collected from TCGA (https://www.cancer.gov/about-nci/organization/ccg/research/structural-genomics/tcga). For the disease under consideration, GWAS Summary data need be collected from resource like GWAS Catalog. Please be sure to include both gene site and p-value in the file.
 
 **More information about collection and pre-processing of heterogeneous data can be found in "HeterogeneousData/README.md"**
