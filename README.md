@@ -1,12 +1,13 @@
-# EMFAS
-**Evidence-augmented Generative Model with Fine-grained weAk Labels (EMFAS) Model for Gene-Disease Association Discovery**
+# PheSeq
+**PheSeq, A Bayesian Deep Learning Model to Enhance and Interpret the Gene Disease Association Studies**
 
-EMFAS is an abbreviation of "Evidence-augmented Generative Model with Fine-grained weAk Labels ". This is a Generative model with Bayesian framework. Please follow the below directions to run this model.
+In the midst of numerous genotype-phenotype association studies, the derived association findings frequently exhibit a lack of robustness and meaningful interpretations. In response to these challenges, we have introduced PheSeq, a Bayesian deep learning model. This model enhances and elucidates association studies by integrating and comprehending phenotype descriptions.
+
+The repository includes the complete algorithms and visualization code for PheSeq designed for three exemplary diseases: Alzheimer's Disease, Breast Cancer, and Lung Cancer. It also provides a flexible data interface and alternative gene network embeddings for users to seamlessly extend PheSeq to other data modalities and diseases.
 
 ## Environment Configuration  
-EMFAS have been tested using python3.7 on Ubuntu 21.04 and uses the following main dependencies on a CPU and NVIDIA GeForce RTX 3090Ti GPU:  
+PheSeq has undergone testing with Python 3.7 on Ubuntu 21.04 and relies on the following primary dependencies for execution on both CPU and NVIDIA GeForce RTX 3090Ti GPU:
 
- 
     torch==1.7.1
     sympy==1.8.0
     scipy==1.1.2
