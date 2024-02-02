@@ -1,0 +1,100 @@
+Type	Phrase
+Disease-Cygb-deficiency affects retinal degeneration	Cygb-deficiency affects retinal degeneration
+MPA-high [Na+]e-induced	high [Na+]e-induced
+Disease-bipolar	bipolar
+MPA-cell invasiveness	cell invasiveness
+MPA-perinuclear	perinuclear
+MPA-chromatin marks	chromatin marks
+MPA-structure of	structure of
+Disease-RADIATION	RADIATION
+MPA-K48-	K48-
+MPA-anti-PDAC effect	anti-PDAC effect
+Disease-ovarian endometrioid carcinomas	ovarian endometrioid carcinomas
+Disease-MLL-AF9 leukemia	MLL-AF9 leukemia
+MPA-response to ICIs	response to ICIs
+MPA-oncogenic	oncogenic
+Disease-functional dyspepsia	functional dyspepsia
+MPA-c-Myc promoter activity	c-Myc promoter activity
+MPA-intramolecular hydrophilic contacts	intramolecular hydrophilic contacts
+Disease-alcohol use disorders	alcohol use disorders
+MPA-ECM deposition in the	ECM deposition in the
+CPA-growth suppressive abilities	growth suppressive abilities
+MPA-B cell recognizing epitopes	B cell recognizing epitopes
+MPA-decoy function	decoy function
+CPA-invadopodial maturation	invadopodial maturation
+Disease-mismatch-deficiency	mismatch-deficiency
+Disease-triple negative subtype	triple negative subtype
+MPA-nuclear phenotype	nuclear phenotype
+Disease-lipoma	lipoma
+MPA-human LINE-1 retrotransposition	human LINE-1 retrotransposition
+Disease-particular breast and ovarian cancers	particular breast and ovarian cancers
+CPA-direct reprograming	direct reprograming
+Disease-aggressive lung squamous cell carcinoma	aggressive lung squamous cell carcinoma
+MPA-CSC marker expression	CSC marker expression
+MPA-regulatory roles of miRNAs	regulatory roles of miRNAs
+Disease-neuro-toxicities	neuro-toxicities
+MPA-growth	growth
+CPA-Okazaki fragment maturation process	Okazaki fragment maturation process
+MPA-membrane compaction	membrane compaction
+Disease-end-stage renal failure	end-stage renal failure
+MPA-MVBs formation	MVBs formation
+Disease-decreased tumour weight	decreased tumour weight
+MPA-hydrogen bond-mediated crosslinking	hydrogen bond-mediated crosslinking
+MPA-perinuclear accumulation of lysosomes	perinuclear accumulation of lysosomes
+MPA-calcineurin	calcineurin
+CPA-ductal differentiation	ductal differentiation
+MPA-CCL20-induced resistance to chemotherapy	CCL20-induced resistance to chemotherapy
+CPA-clonogenic outgrowth	clonogenic outgrowth
+Disease-acute T-cell lymphoblastic leukemia	acute T-cell lymphoblastic leukemia
+MPA-addictions to extracellular nutrients	addictions to extracellular nutrients
+Disease-FFPE tumors	FFPE tumors
+MPA-actin stress fibres	actin stress fibres
+MPA-5-FU-induced	5-FU-induced
+Disease-type 2-diabetes	type 2-diabetes
+CPA-spindle-like shapes	spindle-like shapes
+MPA-inhibitory action of hydrogen peroxide	inhibitory action of hydrogen peroxide
+Disease-SASI-Hs01_00100751	SASI-Hs01_00100751
+MPA-dynamic CtIP redistribution	dynamic CtIP redistribution
+CPA-PCa cell motility	PCa cell motility
+CPA-senescence melanocyte	senescence melanocyte
+MPA-growth inhibitory efficacy	growth inhibitory efficacy
+Disease-tension	tension
+MPA-activated mtOXPHOS	activated mtOXPHOS
+MPA-macrophage membrane molecule expression	macrophage membrane molecule expression
+MPA-TNF production	TNF production
+CPA-progression of preexisting early lesions	progression of preexisting early lesions
+MPA-death induced by	death induced by
+Disease-tumour cells within the lung	tumour cells within the lung
+CPA-escape from the	escape from the
+Disease-efficiency of lung metastasis	efficiency of lung metastasis
+CPA-adaptive resistance	adaptive resistance
+MPA-levels of Notch4	levels of Notch4
+MPA-doxorubicin effects	doxorubicin effects
+MPA-dysregulated production of	dysregulated production of
+CPA-chemotherapy-induced resistance	chemotherapy-induced resistance
+Disease-Breast Tumor Cancer Cells	Breast Tumor Cancer Cells
+Disease-peritumoral lymphohistiocytic inflammation	peritumoral lymphohistiocytic inflammation
+Disease-progeroid changes	progeroid changes
+MPA-CIdU incorporation	CIdU incorporation
+CPA-sensitive to T cell killing	sensitive to T cell killing
+MPA-genes related	genes related
+MPA-correct substrate refolding	correct substrate refolding
+Disease-colorectal tumors	colorectal tumors
+MPA-glycosylation	glycosylation
+MPA-NAP release	NAP release
+MPA-alternative RNA splicing	alternative RNA splicing
+MPA-systemic dissemination of pathogens	systemic dissemination of pathogens
+Disease-alveolar type II	alveolar type II
+MPA-cellular permissiveness for CCM absorption	cellular permissiveness for CCM absorption
+MPA-TMB values	TMB values
+Disease-leukemia and colon cancer	leukemia and colon cancer
+Disease-reduction in glucose consumption	reduction in glucose consumption
+Disease-atrioventricular	atrioventricular
+MPA-increased-DNA-damage	increased-DNA-damage
+MPA-dopamine-dependent	dopamine-dependent
+MPA-circRNAs	circRNAs
+CPA-MCF7-F cell growth	MCF7-F cell growth
+MPA-antagonist responses	antagonist responses
+MPA-Protein level of	Protein level of
+MPA-cellular NO consumption	cellular NO consumption
+Disease-SACC	SACC
