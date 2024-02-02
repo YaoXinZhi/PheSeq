@@ -38,7 +38,7 @@ Download: http://www.interactome-atlas.org/download
 
 
 
-**Durg-Target Network**。
+**Durg-Target Network**  
 Cite:  
 [1] Yıldırım, Muhammed A., et al. "Drug—target network." Nature biotechnology 25.10 (2007): 1119-1126.   
-Download:  https://www.nature.com/articles/nbt1338 (Appendix Material 41587_2007_BFnbt1338_MOESM5_ESM.xls)
+Download: [Appendix Material 41587_2007_BFnbt1338_MOESM5_ESM.xls](https://www.nature.com/articles/nbt1338)
