@@ -24,9 +24,10 @@ Other dependency packages can be found in the **requeirement.txt**, and batch in
 ## Data preprocessing
 
 ### Pre-computed embedding for 32 Pan-Cancers in TCGA  
-To facilitate the PheSeq implementation for more disease cases, pre-processed text and embedding data for 32 types of Pan-Cancers in TCGA database are offered in http://lit-evi.hzau.edu.cn/Bayes/more-diseases. The data include rich-annotated sentence evidence and pre-computed embedding for each gene.  
 
-For these 32 cancers, the pre-computed embedding data can be downloaded directly, and the PheSeq model can be used to intergrate the sequence analysis data already developed by the user with embedding data.  
+To streamline the implementation of PheSeq for additional disease cases, pre-processed text and embedding data for 32 types of Pan-Cancers in the TCGA database are provided at http://lit-evi.hzau.edu.cn/Bayes/more-diseases. This dataset comprises extensively annotated sentence evidence and pre-computed embeddings for each gene.
+
+For these 32 cancers, users can directly download the pre-computed embedding data and seamlessly integrate it with the sequence analysis data they have already developed, utilizing the PheSeq model.  
 
 
 ### Data Collection
