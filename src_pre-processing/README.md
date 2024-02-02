@@ -68,7 +68,7 @@ This step is used to merge the three types of embeddings with fixed weights.
 **\[embedding_save_file]:** merged embedding save file.    
 
 
-    python Text_embedding_merge.py --text_embedding_file [text_embedding_file]
+    python Gene_embedding_merge.py --text_embedding_file [text_embedding_file]
                                    --concept_embedding_file [concept_embedding_file]
                                    --embedding_save_file [embedding_save_file]
 
