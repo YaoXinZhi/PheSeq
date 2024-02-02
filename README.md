@@ -3,7 +3,7 @@
 
 In the midst of numerous genotype-phenotype association studies, the derived association findings frequently exhibit a lack of robustness and meaningful interpretations. In response to these challenges, we have introduced PheSeq, a Bayesian deep learning model. This model enhances and elucidates association studies by integrating and comprehending phenotype descriptions.
 
-The repository includes the complete algorithms and visualization code for PheSeq designed for three exemplary diseases: Alzheimer's Disease, Breast Cancer, and Lung Cancer. It also provides a flexible data interface and alternative gene network embeddings for users to seamlessly extend PheSeq to other data modalities and diseases.
+The repository comprehensively encompasses algorithms and visualization code for PheSeq designed for three exemplary diseases: Alzheimer's Disease, Breast Cancer, and Lung Cancer. Additionally, it provides a flexible data interface, alternative gene network embeddings, and data for 32 Pan-Cancer types. This allows users to seamlessly extend PheSeq to other data modalities and diverse diseases.
 
 ## Environment Configuration  
 PheSeq has undergone testing with Python 3.7 on Ubuntu 21.04 and relies on the following primary dependencies for execution on both CPU and NVIDIA GeForce RTX 3090Ti GPU:
