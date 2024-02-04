@@ -4,7 +4,6 @@ The Supplementary Graph Embedding folder provides gene network embeddings constr
 
 The **Supplementary Graph Embedding** folder provides gene network embeddings constructed using the STRING database for protein-protein interactions (PPI), along with five sets of alternative network edge files and pre-trained gene network embeddings, as introduced in the paper.
 
-
 **STRING-PPI (utilzed in the paper)**:   
 Cite:  
 [1] Yue, Xiang, et al. "Graph embedding on biomedical networks: methods, applications and evaluations." Bioinformatics 36.4 (2020): 1241-1251.   
